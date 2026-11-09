@@ -1,0 +1,5 @@
+package org.example.station_de_ski.entites;
+
+public enum TypeCours {
+    COLLECTIF_ENFANTS, COLLECTIF_ADULTES, PARTICULIER
+}

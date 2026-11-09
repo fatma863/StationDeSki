@@ -1,0 +1,12 @@
+package org.example.station_de_ski.services.interfaces;
+import org.example.station_de_ski.entites.Abonnement;
+
+import java.util.List;
+
+public interface IAbonnementService {
+    void addAbonnement(Abonnement abonnement);
+    void updateAbonnement(Abonnement abonnement);
+    void deleteAbonnement(long id);
+    Abonnement getAbonnement(long id);
+    List<Abonnement> getAllAbonnement();
+}

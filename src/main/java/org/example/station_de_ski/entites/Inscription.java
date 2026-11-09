@@ -1,0 +1,39 @@
+package org.example.station_de_ski.entites;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.io.Serializable;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Inscription implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long numInscription;
+    private int numSemaine;
+    public void setSkieur(Skieur skieur) {
+        this.skieur = skieur;
+    }
+    public int getNumSemaine() {
+        return numSemaine;
+    }
+    public void setCours(Cours cours) {
+        this.cours = cours;
+    }
+
+    @ManyToOne
+    Skieur skieur;
+    @ManyToOne
+    Cours cours;
+}

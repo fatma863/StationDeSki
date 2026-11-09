@@ -1,0 +1,29 @@
+package org.example.station_de_ski.entites;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Moniteur implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long numMoniteur;
+    private String nomM;
+    private String prenomM;
+    private LocalDateTime dateRecru;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Cours> cours;
+}

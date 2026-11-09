@@ -1,0 +1,4 @@
+package org.example.station_de_ski.repositories;
+
+public interface MoniteurRepository {
+}

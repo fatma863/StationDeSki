@@ -1,0 +1,38 @@
+package org.example.station_de_ski.controllers;
+import lombok.AllArgsConstructor;
+import org.example.station_de_ski.entites.Skieur;
+import org.example.station_de_ski.services.interfaces.ISkieurService;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+@AllArgsConstructor
+@RestController
+@RequestMapping("/api/skieur")
+
+public class SkieurController {
+
+    private final ISkieurService skieurService;
+
+
+
+    @GetMapping("/allskieurs")
+    public List<Skieur> retriveAllSkieurs() {
+        return skieurService.retriveAllSkieurs();
+    }
+    @GetMapping("/{id}")
+    public Skieur retriveSkieur(@PathVariable long id) {
+        return skieurService.retriveSkieur(id);
+    }
+@PostMapping("/addskieur")
+public Skieur addSkieur(@RequestBody Skieur skieur) {
+    return skieurService.addSkieur(skieur);
+
+}
+@PutMapping("/updateskieur")
+public Skieur updateSkieur(@RequestBody Skieur skieur) {
+    return skieurService.updateSkieur(skieur);
+}
+@DeleteMapping("/delete/{id}")
+public void removeSkieur(@PathVariable long id) {
+    skieurService.removeSkieur(id);
+}
+}

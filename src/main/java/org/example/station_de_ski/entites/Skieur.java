@@ -1,0 +1,43 @@
+package org.example.station_de_ski.entites;
+
+import lombok.*;
+import jakarta.persistence.*;
+import lombok.experimental.FieldDefaults;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Skieur implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long numSkieur;
+    private String nomS;
+    private String prenomS;
+    private LocalDate dateDeNaissance;
+    private String ville;
+    public Set<Inscription> getInscriptions() {
+        if (inscriptions == null) {
+            inscriptions = new HashSet<>();
+        }
+        return inscriptions;
+    }
+
+    @OneToOne
+    private Abonnement abonnemenet;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Piste> pistes;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "skieur")
+    private Set<Inscription> inscriptions;
+}
